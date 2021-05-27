@@ -1,0 +1,29 @@
+name: Pull data from FHRS
+
+on:
+  schedule:
+    - cron: '5 5 1 * *'
+  push:
+    branches:
+      - main
+
+jobs:
+  pull-fhrs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@main
+      - name: Get dependancies
+        run: sudo apt install golang
+      - name: Pull data
+        run: go run ./main.go ./fhrs.go
+      - name: Format output
+        run: ./buildoutput.sh
+      - name: Commit new data
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "GitHub Actions"
+          git add -A data
+          git commit -m "autopublish: $(date -u +"%Y-%m-%d")"
+          git push
+
