@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -51,7 +52,7 @@ func main() {
 			}
 
 			_, err = io.WriteString(file,
-				establishment.PostCode+","+
+				strings.ToUpper(establishment.PostCode)+","+
 					establishment.Geocode.Latitude+","+
 					establishment.Geocode.Longitude+"\n")
 		}
