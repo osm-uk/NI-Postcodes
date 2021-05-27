@@ -3,9 +3,7 @@ name: Pull data from FHRS
 on:
   schedule:
     - cron: '5 5 1 * *'
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   pull-fhrs:
