@@ -51,8 +51,17 @@ func main() {
 				continue
 			}
 
+			var postcode = strings.Trim(establishment.PostCode, " ")
+
+			postcode = strings.ToUpper(postcode)
+
+			var inwards = postcode[len(postcode)-3:]
+			var outwards = strings.Trim(postcode[0:len(postcode)-3], " ")
+
+			postcode = outwards + " " + inwards
+
 			_, err = io.WriteString(file,
-				strings.ToUpper(establishment.PostCode)+","+
+				postcode+","+
 					establishment.Geocode.Latitude+","+
 					establishment.Geocode.Longitude+"\n")
 		}
