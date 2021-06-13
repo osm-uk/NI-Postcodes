@@ -64,6 +64,14 @@ func main() {
 
 			postcode = outwards + " " + inwards
 
+			if len(postcode) > 8 {
+				continue
+			}
+
+			if len(postcode) < 6 {
+				continue
+			}
+
 			_, err = io.WriteString(file,
 				postcode+","+
 					establishment.Geocode.Latitude+","+
