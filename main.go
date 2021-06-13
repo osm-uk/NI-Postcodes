@@ -58,6 +58,10 @@ func main() {
 			var inwards = postcode[len(postcode)-3:]
 			var outwards = strings.Trim(postcode[0:len(postcode)-3], " ")
 
+			if inwards[0:1] == "O" {
+				inwards = "0" + inwards[1:]
+			}
+
 			postcode = outwards + " " + inwards
 
 			_, err = io.WriteString(file,
