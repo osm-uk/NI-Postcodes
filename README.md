@@ -6,6 +6,12 @@ All data is from [Food Hygiene Ratings Scheme Data](https://data.food.gov.uk/cat
 
 Contains public sector information licensed under the Open Government Licence v3.0.
 
+## Dev
+
+```sh
+docker-compose up
+```
+
 ## Code
 
 All code is released under BSD 2-clause "Simplified" license.
